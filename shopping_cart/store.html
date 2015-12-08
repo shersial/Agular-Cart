@@ -1,0 +1,110 @@
+<!-- product page -->
+<div class="container">
+    <!--  -->
+    <h1> <i class="fa fa-shopping-cart"></i> Products <a href="#" class="btn btn-danger pull-right hide" id="back-to-bootsnipp">Back to Home page</a></h1>
+    <hr>
+    <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th><b>#Code</b></th>
+                        <th><b>Name</b></th>
+                        <th><b>Manufacturers</b></th>
+                        <th><b>Model</b></th>
+                        <th><b>Price</b></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="product in store.rings | orderBy:'sku' | filter:search">
+                        <td>{{product.sku}}</td>
+                        <td><button ng-click="open(product.sku)"><b>{{product.name}}</b></buton></td>
+                        <td>{{product.manufacturers}}</td>
+                        <td>{{product.model}}</td>
+                        <td>{{product.price}}</td>
+                        <td> <a class="btn  btn-cart btn-success pull-right" href="" ng-click="cart.addItem(product.sku, product.name, product.price, 1)">
+                add to cart
+            </a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+        <div class="table-responsive">
+            <table class="table ">
+                <thead>
+                    <tr>
+                        <th>Shopping Cart</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in cart.items | orderBy:'name'">
+                        <td>{{item.name}}</td>
+                        <td class="MyRight">{{item.price * item.quantity | currency}}</td>
+                        <td class="MyRight">{{item.quantity}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>{{cart.getTotalCount()}}</b> items,</td>
+                        <td><b>{{cart.getTotalPrice() | currency}}</b></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <a href="index.html#/cart" class="index_cart">
+                                <button title="go to shopping cart" ng-disabled="cart.getTotalCount() < 1" type="button" class="btn btn-success btn-large btn-block">Go to cart</button>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-sm-12 ">
+        <div class="result pull-left"><strong>showing 1 up until 6 from 5000</strong></div>
+        <ul class="pagination pull-right">
+            <li><a href="#">«</a></li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">»</a></li>
+        </ul>
+    </div>
+</div>
+<!-- <table class="table table-hover">
+<tbody><tr class="well">
+            <td class="MyRight2" colspan="6">
+                <a href="index.html#/cart" title="go to shopping cart" ng-disabled="cart.getTotalCount() < 1">
+                    <i class="fa  fa-shopping-cart" />
+                    <b>{{cart.getTotalCount()}}</b> items, <b>{{cart.getTotalPrice() | currency}}</b>
+                </a>
+            </td>
+        </tr></tbody>
+
+    <thead>
+        <tr>
+            <th>#Cod</th>
+            <th>Name</th>
+            <th>Manufacturers</th>
+            <th>Model</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr ng-repeat="product in store.rings | orderBy:'sku' | filter:search">
+            <td>{{product.sku}}</td>
+            <td><a href="#/prod/{{product.sku}}"><b>{{product.name}}</b></a></td>
+            <td>{{product.manufacturers}}</td>
+            <td>{{product.model}}</td>
+            <td>{{product.price}}</td>
+            <td> <a class="btn  btn-cart btn-success pull-right" href="" ng-click="cart.addItem(product.sku, product.name, product.price, 1)">
+                add to cart
+            </a></td>
+        </tr>
+    </tbody>
+</table>
+ -->

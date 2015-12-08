@@ -1,0 +1,49 @@
+
+
+
+
+<div class="container">
+<p class="My-Text">
+    <img ng-src="img/prod/{{product.sku}}.jpg" alt="{{product.name}}" width="25%" /> {{product.name}}: {{product.description}}
+    <br />
+</p>
+<ul class="Ring_Descr">
+    <li>Milgrain, pave floral or embossed designs</li>
+    <li>Sentimental touches</li>
+    <li>Strong use of embellishment</li>
+    <li>The wearer would love a wedding in a romantic setting like a castle or a garden full of flowers</li>
+</ul>
+    <div class="row">
+        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+            <!-- product info -->
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                <tr class="well">
+                    <td class="MyRight1" colspan="3">
+                        <a href="index.html#/cart" title="go to shopping cart" ng-disabled="cart.getTotalCount() < 1">
+                            <i class="fa fa-shopping-cart" />
+                            <b>{{cart.getTotalCount()}}</b> items, <b>{{cart.getTotalPrice() | currency}}</b>
+                            <span ng-show="cart.getTotalCount(product.sku) > 0"><br />This product is in the cart</span>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+            </div>
+            
+        </div>
+        <!-- buttons -->
+        <div class="col-lg-3 col-md-3 col-ms-12 col-xs-12">
+            <button class="btn btn-block btn-success" ng-click="cart.addItem(product.sku, product.name, product.price, 1)">
+                <i class="fa fa-cart-plus" /> Add to cart
+            </button>
+            <button class="btn btn-block btn-danger" ng-click="cart.addItem(product.sku, product.name, product.price, -10000)" ng-disabled="cart.getTotalCount(product.sku) < 1">
+                <i class="fa fa-trash" /> Remove from cart
+            </button>
+            <button class="btn btn-block" onclick="window.location.href=''">
+                <i class="fa fa-chevron-left" /> Back to store
+            </button>
+             <button ng-disabled="cart.getTotalCount() < 1" class="btn btn-success btn-block" onclick="window.location.href='index.html#/cart'">
+             <i class="fa fa-shopping-cart"/>Go to cart</button>
+        </div>
+    </div>
+</div>
